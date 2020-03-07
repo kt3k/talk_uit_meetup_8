@@ -6,4 +6,4 @@
 
 # build
 
-    remareker build
+    remarker build
