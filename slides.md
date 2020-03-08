@@ -163,4 +163,3 @@ deno demo.ts
 ---
 class: middle, center, inverse
 ご静聴ありがとうございました!
----
