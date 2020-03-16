@@ -34,6 +34,10 @@ class: middle, center, inverse
 - TypeScript を直接実行できる JS エンジン
 - Node.js ととても似ている (作者が同じ)
 
+<p align="center">
+  <img src="./assets/ry.png" width="480" />
+</p>
+
 ---
 # Deno とは
 
@@ -206,7 +210,19 @@ deno --allow-read linter.ts
 ---
 # パーミッションフラグ
 
+- 言語の API レベルでパーミッションという概念を実装した言語は (多分) Deno が初めて
+- プログラムの実行を限られた権限の中で行うことが出来るのは, 全ての (メジャーな) 言語の中で Deno だけ (たぶん)
+
+---
+# パーミッションフラグ
+
 - パーミンションフララグの組み合わせ方のベストプラクティスについて Denobook 03 に書きました
+
+<p align="center">
+  <a href="https://techbookfest.org/product/6283486381998080" target="_blank">
+    <img src="./assets/denobook03.png" width="200" />
+  </a>
+</p>
 
 ---
 class: middle, center, inverse
@@ -233,9 +249,11 @@ deno demo.ts
 
 ---
 # Deno とフロントエンド開発
-- 出来たら起こすので, とりあえず寝て待ってて下さい.
+- 出来たら起こすので,<br />とりあえず寝て待ってて下さい.
 
-# スヤァ
+<p align="center">
+  <img src="./assets/aramaki.png" width="400" />
+</p>
 
 ---
 class: inverse
