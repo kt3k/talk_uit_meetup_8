@@ -19,9 +19,8 @@ h1, h2, h3 {
 
 code.remark-code {
   display: block;
-  padding: 1rem;
+  padding: 1rem 3rem;
   margin: 0 -60px;
-  _border-radius: 5px;
   background-color: #272822;
   color: #f3f3f3;
   font-size: 23px;
@@ -163,9 +162,15 @@ class: middle, center
   - => 結構面倒
 
 ---
+# Node の場合
+
+- さらにバンドルをしたい場合はより難易度が上がる.
+- rollup? webpack? plugin どれ使う? などの選択肢が多く, メンテされていないもの(地雷)も多い.
+
+---
 # Deno の場合
 
-- TS を書く. 以上.
+- TypeScript を書く. 以上.
   - トランスパイルや, .d.ts 配布を考える必要がない.
   - => 考えることが極端に少ない ❤️
 
@@ -173,8 +178,24 @@ class: middle, center
 # Deno の場合
 
 - テストも TS でそのまま書く.
-- テストコマンドは `deno test`
 - TS の世界で全て出来るので, JS の世界のことを忘れても良い.
+
+```
+Deno.test("期待動作", () => {
+  // テストコード
+});
+```
+
+```
+deno test
+```
+
+---
+class: middle, center, inverse
+
+# Demo
+
+`deno test demo.ts`
 
 ---
 # Deno のエディタサポート
@@ -197,10 +218,10 @@ class: center, middle
 
 # パーミッションフラグの話
 
-(TS とは直接関係ない話)
+(TS とは直接は関係ないですが)
 ---
 # パーミッションフラグ
-- Deno の目玉機能! パーミッションフラグ
+- Deno の目玉機能!
 - 実行時にプログラムがやって良いことを指定する
 
 例: ネットワークアクセスを許可するパーミッション
@@ -239,13 +260,22 @@ deno --allow-net script.ts
 - フラグを組み合わせて, そのプログラムが本来必要とする機能だけを許可してプログラムを実行する
 - 例: リンター
 
-  ```
-  deno --allow-read linter.ts
-  ```
+```
+deno --allow-read linter.ts
+```
+
+- ↑リンターはファイルの読み込みだけで十分のはず
+- これで権限エラーが起きたら何かが怪しい
 ---
 # パーミッションフラグ
 
-- パーミンションフララグのベストプラクティスについて Denobook 03 に書いたので良かったら読んでみて下さい.
+- ちなみにフラグを何もつけない場合は, 読み書きネットワークアクセスなどは全く出来ない状態で実行されます.
+  - => 信用が出来ないスクリプトは一旦フラグ無しで実行すれば安全に様子を見ることが出来る.
+
+---
+# パーミッションフラグ
+
+- パーミンションフララグの組み合わせ方のベストプラクティスについて Denobook 03 に書きました
 
 ---
 class: middle, center, inverse
@@ -266,9 +296,8 @@ deno demo.ts
 ---
 # Deno とフロントエンド開発
 
-- コンパイラー API が最近充実してきている
-  - Deno.bundle, Deno.compile のような API
-- Deno の TS compiler を使って webpack / parcel のようなものを作るための部品が揃いつつある
+- Deno の中の TypeScript コンパイラー API が最近充実してきている.
+- これを webpack / parcel のようなものを作るための部品として使えそう.
 - 1年後ぐらいにはなんか出来てそうな気がします.
 
 ---
@@ -282,9 +311,9 @@ class: inverse
 # まとめ
 
 - Deno は Node + ts-node + npm みたいなやつ
-- Deno はライブラリ開発の DX が高い
+- Deno はライブラリ開発の DX がとても高い
 - Deno はセキュリティ機能がとても強い
-- Deno でフロントエンドはまだ無理なのでちょっと待って下さい
+- Deno でフロントエンドはまだ無理なのでちょっと待ってて下さい
 
 ---
 class: middle, center
