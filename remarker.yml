@@ -19,7 +19,6 @@ css: |
     display: block;
     padding: 1rem;
     margin: 0 -60px;
-    _border-radius: 5px;
     background-color: #272822;
     color: #f3f3f3;
     font-size: 23px;
