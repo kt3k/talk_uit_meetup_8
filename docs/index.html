@@ -19,8 +19,9 @@ h1, h2, h3 {
 
 code.remark-code {
   display: block;
-  padding: 0.7em;
-  border-radius: 5px;
+  padding: 1rem;
+  margin: 0 -60px;
+  _border-radius: 5px;
   background-color: #272822;
   color: #f3f3f3;
   font-size: 23px;
@@ -93,9 +94,10 @@ Deno のコアコントリビュータ
   - これまで約100 PR コントリビュート
 
 ---
-class: middle, center
+class: middle, center, inverse
 
-# 🦕 Deno を聞いたことある人 🙋‍♀️ 🙋‍♂️
+(本セッションは, Frontend 成分が少なめ,<br/>TypeScript 成分が多め, Deno 成分が多めです.<br/>ご了承ください.)
+
 ---
 # Deno とは
 
@@ -103,29 +105,39 @@ class: middle, center
 - Node.js ととても似ている (作者が同じ)
 
 ---
-# Deno と ts-node
+# Deno とは
+
+- Deno は Node とは互換性がない.
+- npm も使えない. Deno 独自のエコシステムを使う.
+
+---
+# ts-node と Deno
 
 - ts-node も .ts ファイルを直接実行できる.
 - 一見似ているように見える.
+- ts-node は Node 互換で npm が使える.
 
 ---
 # ts-node の依存解決
 - ts-node で 3rd party ライブラリに依存したプログラムを実行する場合, 事前に依存モジュールのダウンロードが必要.
 
 ```
-npm install react @types/react ...
+npm install minimist @types/minimist ...
+```
+してから
+```
+npx ts-node main.ts
 ```
 
 ---
 # Deno の依存解決
 - Deno は実質 Node + npm
-  - 依存の解決が単体で出来る
-- 3rd party 依存したプログラムを実行すると必要なものを自動的に DL & Compile & 実行してくれる
-  - => 余計なインストール作業が一切不要
+  - 依存の解決も Deno がやってくれる
+  - インストール作業が不要
 
 ```
-import * as React from "https://dev.jspm.io/react";
-// => 実行時に自動ダウンロード
+import { parse } from "https://deno.land/std/flags/mod.ts";
+// ↑ 実行時, 自動的にダウンロード
 ```
 
 ---
@@ -154,7 +166,8 @@ class: middle, center
 # Deno の場合
 
 - TS を書く. 以上.
-  - => 考える事が極端に少ない.
+  - トランスパイルや, .d.ts 配布を考える必要がない.
+  - => 考えることが極端に少ない ❤️
 
 ---
 # Deno の場合
@@ -164,8 +177,23 @@ class: middle, center
 - TS の世界で全て出来るので, JS の世界のことを忘れても良い.
 
 ---
+# Deno のエディタサポート
+
+- 最近良いエディタプラグインが出来た
+- axetroy さんの vscode-deno
+- 補完もバッチリ効くようになった
+
+---
+# Deno のエディタサポート
+- Deno 名前空間
+
+---
+# Deno のエディタサポート
+- URL import も補完されます.
+
+
+---
 class: center, middle
-おまけ
 
 # パーミッションフラグの話
 
@@ -214,6 +242,10 @@ deno --allow-net script.ts
   ```
   deno --allow-read linter.ts
   ```
+---
+# パーミッションフラグ
+
+- パーミンションフララグのベストプラクティスについて Denobook 03 に書いたので良かったら読んでみて下さい.
 
 ---
 class: middle, center, inverse
@@ -222,16 +254,41 @@ class: middle, center, inverse
 ```
 deno demo.ts
 ```
+
 ---
+# Deno とフロントエンド開発
+
+- `deno bundle` というコマンドで webpack みたいなことが出来る.
+- が, デフォルトでは dom の型が入っていないのでフロント開発が出来ない.
+- react や vue の型を正しく読み込む方法も不安定
+  - => フロント開発はまだ無理 😣
+
+---
+# Deno とフロントエンド開発
+
+- コンパイラー API が最近充実してきている
+  - Deno.bundle, Deno.compile のような API
+- Deno の TS compiler を使って webpack / parcel のようなものを作るための部品が揃いつつある
+- 1年後ぐらいにはなんか出来てそうな気がします.
+
+---
+# Deno とフロントエンド開発
+- 出来たら起こすので, とりあえず寝て待ってて下さい.
+
+# スヤァ
+
+---
+class: inverse
 # まとめ
 
 - Deno は Node + ts-node + npm みたいなやつ
-- Deno を使うと TypeScript の世界だけで全部できるようになる
-- Deno はセキュリティ機能が強い
+- Deno はライブラリ開発の DX が高い
+- Deno はセキュリティ機能がとても強い
+- Deno でフロントエンドはまだ無理なのでちょっと待って下さい
 
 ---
-class: middle, center, inverse
-ご静聴ありがとうございました!
+class: middle, center
+ご清聴ありがとうございました! 🙇‍♂️
 </textarea>
     <script src="remark.js"></script>
     
