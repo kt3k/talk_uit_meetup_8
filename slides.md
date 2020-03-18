@@ -51,6 +51,10 @@ class: middle, center, inverse
 - 一見似ているように見える.
 - ts-node は Node 互換で npm が使える.
 
+<p align="center">
+  <img src="./assets/ts-node.svg" width="580" />
+</p>
+
 ---
 # ts-node の依存解決
 - ts-node で 3rd party ライブラリに依存したプログラムを実行する場合, 事前に依存モジュールのダウンロードが必要.
@@ -74,6 +78,12 @@ import { parse } from "https://deno.land/std/flags/mod.ts";
 // ↑ 実行時, 自動的にダウンロード
 ```
 
+上のスクリプトを直接
+
+```
+deno main.ts
+```
+
 ---
 class: middle, center, inverse
 # Demo
@@ -81,6 +91,11 @@ class: middle, center, inverse
 ```
 deno demo.ts
 ```
+
+???
+
+demo-flag.ts と demo-serve.ts を DL and compile と再実行
+
 ---
 class: middle, center
 # ライブラリの作り方
@@ -214,7 +229,15 @@ deno --allow-read linter.ts
 - プログラムの実行を限られた権限の中で行うことが出来るのは, 全ての (メジャーな) 言語の中で Deno だけ (たぶん)
 
 ---
-# パーミッションフラグ
+class: middle, center, inverse
+# DEMO
+
+```
+deno demo.ts
+```
+
+---
+# 宣伝
 
 - パーミンションフララグの組み合わせ方のベストプラクティスについて Denobook 03 に書きました
 
@@ -225,12 +248,8 @@ deno --allow-read linter.ts
 </p>
 
 ---
-class: middle, center, inverse
-# DEMO
-
-```
-deno demo.ts
-```
+class: middle, center
+# Deno とフロントエンド開発
 
 ---
 # Deno とフロントエンド開発
