@@ -15,13 +15,14 @@ class: middle, center
 ---
 # Deno澤
 
-Deno のコアコントリビュータ
+Deno というソフトウェアのコアコントリビュータ
 
 - Deno で作った機能
   - Signal Handler
   - Benchmark システム
   - deno fmt (初期版)
   - これまで約100 PR コントリビュート
+  - => いつからかDeno澤とよばれるように・・・
 
 ---
 class: middle, center, inverse
@@ -77,7 +78,7 @@ class: middle, center, inverse
 
 ---
 # ts-node の依存解決
-- ts-node で 3rd party ライブラリに依存したプログラムを実行する場合, 事前に依存モジュールのダウンロードが必要.
+- ts-node で外部ライブラリに依存したプログラムを実行する場合, 事前に依存モジュールのダウンロードが必要.
 
 ```
 npm install minimist @types/minimist ...
@@ -117,6 +118,13 @@ deno demo.ts
 demo-flag.ts と demo-serve.ts を DL and compile と再実行
 
 ---
+# Deno の特徴 まとめ
+
+- Deno は Node + ts-node + npm みたいなもの
+- とりあえず TypeScript を動かしたい場合は<br/>Deno が一番簡単
+  - Node.js はあまり詳しくないけれど TypeScript を手っ取り早く試したい場合は特におすすめです.
+
+---
 class: middle, center
 # ライブラリの作り方
 
@@ -129,13 +137,15 @@ class: middle, center
 
 - npm に TS を上げることは出来ないため, 一旦全て JS にする必要がある
 - なおかつ型補完を効かせるために .d.ts ファイルを用意する必要もある
+- `@types/` 以下で型を配信したい場合は definitely-typed というレポジトリに PR を投げてマージされる必要がある.
   - => 結構面倒
 
 ---
 # Node の場合
 
 - さらにバンドルをしたい場合はより難易度が上がる.
-- rollup? webpack? plugin どれ使う? などの選択肢が多く, メンテされていないもの(地雷)も多い.
+- rollup? webpack? plugin どれ使う? などの選択肢が多く, メンテされていないものも多い.
+  - rollup-plugin-typescript2 vs @rollup/plugin-typescript など
 
 ---
 # Deno の場合
@@ -145,9 +155,18 @@ class: middle, center
   - => 考えることが極端に少ない ❤️
 
 ---
-# Deno の場合
+# Node のテスト
 
-- テストも TS でそのまま書く.
+- ts-jest やテスト依存の各種型定義のインストールが必要.
+
+```
+npm install --dev ts-jest @types/jest etc ...
+```
+
+---
+# Deno のテスト
+
+- テストも TS でそのまま書くだけで OK.
 - TS の世界で全て出来るので, JS の世界のことを忘れても良い.
 
 ```
