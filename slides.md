@@ -29,6 +29,14 @@ class: middle, center, inverse
 (本セッションは, Frontend 成分が少なめ,<br/>TypeScript 成分が多め, Deno 成分が多めです.<br/>ご了承ください.)
 
 ---
+# Agenda
+
+- Deno とは
+- Deno でライブラリを作るには
+- Deno のパーミッションフラグ
+- Deno とフロントエンド開発
+
+---
 # Deno とは
 
 - TypeScript を直接実行できる JS エンジン
@@ -43,6 +51,18 @@ class: middle, center, inverse
 
 - Deno は Node とは互換性がない.
 - npm も使えない. Deno 独自のエコシステムを使う.
+
+---
+class: middle, center, inverse
+
+あれ, TypeScript が直接使える<br/>npm パッケージなかったっけ・・・?
+
+---
+class: middle, center, inverse
+
+あります
+
+# ts-node
 
 ---
 # ts-node と Deno
@@ -121,7 +141,7 @@ class: middle, center
 # Deno の場合
 
 - TypeScript を書く. 以上.
-  - トランスパイルや, .d.ts 配布を考える必要がない.
+  - トランスパイルや, .d.ts 配布を考える必要がない. (Deno 本体がコンパイルしてくれるので)
   - => 考えることが極端に少ない ❤️
 
 ---
@@ -145,7 +165,9 @@ class: middle, center, inverse
 
 # Demo
 
-`deno test demo.ts`
+```
+deno test demo.ts
+```
 
 ---
 # Deno のエディタサポート
@@ -158,10 +180,22 @@ class: middle, center, inverse
 # Deno のエディタサポート
 - Deno 名前空間
 
+<p align="center">
+  <img src="./assets/deno-ns.png" width="700" />
+</p>
+
 ---
 # Deno のエディタサポート
 - URL import も補完されます.
 
+<p align="center">
+  <img src="./assets/url-import.png" width="700" />
+</p>
+
+---
+class: center, middle
+
+TypeScript で再利用可能なライブラリを開発する<br />という点での開発体験がかなり高いのが Deno.
 
 ---
 class: center, middle
@@ -194,16 +228,14 @@ deno --allow-net script.ts
 
 ---
 # パーミッションフラグ
-- --allow-read
-  - ファイル読み込み許可
-- --allow-write
-  - ファイル書き込み許可
+- --allow-read / --allow-write
+  - ファイル読み込み/書き込み許可
 - --allow-net
   - ネットアクセス許可
 - --allow-env
   - 環境変数アクセス許可
 - --allow-all
-  - 全部許可 ☠️
+  - 全部許可 (便利だけど, 無意識に使うと危険☠️
 ---
 # パーミッションフラグ
 
@@ -223,23 +255,24 @@ deno --allow-read linter.ts
   - => 信用が出来ないスクリプトは一旦フラグ無しで実行すれば安全に様子を見ることが出来る.
 
 ---
+class: middle, center, inverse
+# DEMO
+
+```
+deno demo-permission.ts
+```
+
+---
 # パーミッションフラグ
 
 - 言語の API レベルでパーミッションという概念を実装した言語は (多分) Deno が初めて
 - プログラムの実行を限られた権限の中で行うことが出来るのは, 全ての (メジャーな) 言語の中で Deno だけ (たぶん)
 
 ---
-class: middle, center, inverse
-# DEMO
-
-```
-deno demo.ts
-```
-
----
-# 宣伝
+宣伝
 
 - パーミンションフララグの組み合わせ方のベストプラクティスについて Denobook 03 に書きました
+- 技術書典のサイトから購入できます
 
 <p align="center">
   <a href="https://techbookfest.org/product/6283486381998080" target="_blank">
@@ -279,10 +312,12 @@ class: inverse
 # まとめ
 
 - Deno は Node + ts-node + npm みたいなやつ
-- Deno はライブラリ開発の DX がとても高い
+- Deno は TypeScript ライブラリ開発の DX がとても高い
 - Deno はセキュリティ機能がとても強い
 - Deno でフロントエンドはまだ無理なのでちょっと待ってて下さい
 
 ---
 class: middle, center
 ご清聴ありがとうございました! 🙇‍♂️
+
+<small>このスライドの URL は<br/>https://git.io/uit8-deno</small>

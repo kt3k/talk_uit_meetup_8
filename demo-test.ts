@@ -9,5 +9,5 @@ Deno.test('5 * 8 = 40', () => {
 })
 
 Deno.test('5 ** 8 = 390625', () => {
-  assertEquals(5 ** 8, 390625)
+  assertEquals(5 ** 8, 390625 + 1)
 })
